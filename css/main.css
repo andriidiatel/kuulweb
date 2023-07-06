@@ -1,0 +1,139 @@
+html { 
+  background: rgba(2,65,134,1) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.root {
+  background: rgba(2,65,134,1) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+div.leaderboard-table {
+  padding: 100px;
+} 
+
+table.leaderboard-table {
+  background-color: rgba(2,65,134,1);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.leaderboard-table-row-separator {
+  height: 20px;
+}
+
+.leaderboard-table-row {
+  height: 64px;
+  /* border-top-width: 5px;
+  border-top-color: rgba(2,65,134,1); */
+
+  background: rgba(255, 255, 255, 0.10);
+
+  width: 1366px;
+  height: 120px;
+  flex-shrink: 0;
+
+  color: #FFF;
+  text-align: center;
+  font-size: 64px;
+  font-family: Red Hat Text;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.leaderboard-table-row td:last-child {
+  text-align: left;
+}
+
+.leaderboard-table tbody>tr>td:first-child {
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+}
+
+.leaderboard-table tbody>tr>td:last-child {
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+.leaderboard-table tbody>tr:nth-child(2) {
+  background: linear-gradient(127deg, #FCCF31 0%, #CD9832 100%);
+}
+
+.leaderboard-table tbody>tr:nth-child(4) {
+  background: linear-gradient(127deg, #8B91A1 0%, #6E7791 100%);
+}
+
+.leaderboard-table tbody>tr:nth-child(6) {
+  background: linear-gradient(123deg, #DC551B 0%, #B94E21 100%);
+}
+
+
+
+.title {
+  color: #FFF;
+  text-align: center;
+  font-size: 64px;
+  font-family: Red Hat Text;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 64px;
+}
+
+.table-header {
+  border-radius: 14px;
+  background: #0C2962;
+  
+  color: #FFF;
+  text-align: center;
+  font-size: 36px;
+  font-family: Red Hat Text;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 72px;
+}
+
+.table-header-rank {
+  width: 340px;
+  height: 77px;
+  flex-shrink: 0;
+}
+
+.table-header-square-name {
+  width: 700px;
+  height: 77px;
+  flex-shrink: 0;
+}
+
+.table-header-movement-point {
+  width: 340px;
+  height: 77px;
+  flex-shrink: 0;
+}
+
+.row {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.row-first {
+  border-radius: 14px;
+  background: linear-gradient(127deg, #FCCF31 0%, #CD9832 100%);
+}
+
+.row-first-rank {
+  width: 1366px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+
+
+
+

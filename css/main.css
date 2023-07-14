@@ -12,11 +12,11 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
+/* }
 
 div.leaderboard-table {
-  padding: 100px;
-} 
+  /* padding: 100px; */
+}  */
 
 table.leaderboard-table {
   background-color: rgba(2,65,134,1);

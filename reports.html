@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Red+Hat+Text&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Font+Awesome+5+Brands&display=swap" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@0.4.0/dist/lottie-player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <title>Leaderboard</title>
+</head>
+    
+    
+<script>
+    function generateReport(reportName) {
+        var reportData = document.getElementById("report").outerHTML;
+
+        const options = {
+            "method": "POST",
+            "url": "https://api.pdfendpoint.com/v1/convert",
+            "headers": {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer 8f0eeb8bd3d1372b796c37a162752f8d714964e2dc"
+            },
+            "data": JSON.stringify({
+                "orientation": "horizontal",
+                "page_size": "A4",
+                //"html": "<body>\n    <div class=\"root\" style=\"height: 780px;width: 1100px;background-color: white;font-size: 100px;\">\n        <p style=\"padding-top: 200px; padding-left: 100px;\">Weekly Kuul Play</p>\n        <p style=\"padding-left: 100px;\">Report</p>\n    </div>\n    \n    <div class=\"root\" style=\"height: 780px;width: 1100px;background-color: white;\">\n        <table style=\"height: 780px; width: 100%;\">\n            <tbody>\n                <tr>\n                    <td rowspan=\"2\" style=\"border-right: solid grey;width: 100px;\"></td>\n                    <td style=\"border-bottom: solid grey;height: 50px;\">\n                        <p style=\"font-weight: bold; color: grey; font-size: 30px;\">Weekly Kuul Play Internal Monitoring Report</p>\n                        <p>\n                            <span style=\"font-weight: bold;\">Date Period </span>\n                            <span style=\"border: solid grey;border-radius: 5px;\">from Aug 1, 2023</span>\n                            <span style=\"border: solid grey;border-radius: 5px;\">to Aug7, 2023</span>\n                        </p>\n                    </td>\n                </tr>\n                <tr>\n                    <td style=\"vertical-align: baseline;\">\n                        <p style=\"font-weight: bold; color: grey;\">Instructor Activity Level</p>\n                        <table style=\"width: 98%;text-align: center;margin-left: 2%;\">\n                            <tbody><tr>\n                                <td rowspan=\"2\" style=\"border-top-left-radius: 10px; background-color: darkturquoise; border-top-right-radius: 10px;\">Instructor Name</td>\n                                <td rowspan=\"2\"># logins</td>\n                                <td colspan=\"2\">Lesson duration (mins)</td>\n                                <td rowspan=\"2\">Current Progress</td>\n                                <td rowspan=\"2\">Last Survey Completed</td>\n                            </tr>\n                            <tr>\n                                <td>Lesson Name</td>\n                                <td>Lesson Name</td>\n                            </tr>\n                            <tr>\n                                <td style=\"background-color: darkturquoise;\">Ana Garcia</td>\n                                <td style=\"width: 150px;\">\n                                    <div style=\" background-color: yellow; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;\">2</div>\n                                </td>\n                                <td style=\"width: 150px;\">\n                                    <div style=\" background-color: greenyellow; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;\">41</div>\n                                </td>\n                                <td style=\"width: 150px;\">\n                                    <div style=\" background-color: yellow; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;\">29</div>\n                                </td>\n                                <td style=\"color: blue;font-weight: bold;\">Mission 1; L2</td>\n                                <td style=\"color: blue;font-weight: bold;\">N/A</td>\n                            </tr>\n                            <tr>\n                                <td style=\"background-color: darkturquoise;\">Thao Min</td>\n                                <td style=\"width: 150px;\">\n                                    <div style=\" background-color: greenyellow; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;\">3</div>\n                                </td>\n                                <td style=\"width: 150px;\">\n                                    <div style=\" background-color: yellow; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;\">28</div>\n                                </td>\n                                <td style=\"width: 150px;\">\n                                    <div style=\" background-color: greenyellow; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;\">35</div>\n                                </td>\n                                <td style=\"color: blue;font-weight: bold;\">Mission 1; L2</td>\n                                <td style=\"color: blue;font-weight: bold;\">Mission 1; L3</td>\n                            </tr>\n                            <tr>\n                                <td style=\"background-color: darkturquoise;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;\">Jack Smith</td>\n                                <td style=\"width: 150px;\">\n                                    <div style=\" background-color: red; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;\">0</div>\n                                </td>\n                                <td style=\"width: 150px;\">\n                                    <div style=\" background-color: red; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;\">20</div>\n                                </td>\n                                <td style=\"width: 150px;\">\n                                    <div style=\" background-color: red; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;\">10</div>\n                                </td>\n                                <td style=\"color: blue;font-weight: bold;\"></td>\n                                <td style=\"color: blue;font-weight: bold;\"></td>\n                            </tr>\n                        </tbody></table>\n                    </td>\n                </tr>\n            </tbody>\n        </table>\n    </div>\n    \n    <div class=\"root\" style=\"height:1100px\">\n        my content\n        test\n    </div>\n    <div class=\"root\" style=\"height:1100px\">\n        my content\n        test\n    </div>\n    <div class=\"root\">\n        my content\n        test\n    </div>\n    <div class=\"root\">\n        my content\n        test\n    </div>\n    <div class=\"root\">\n        my content\n        test\n    </div>\n    <div class=\"root\">\n        my content\n        test\n    </div>\n    <div class=\"root\">\n        my content\n        test\n    </div>\n    <div class=\"root\">\n        my content\n        test\n    </div>\n    <div class=\"root\">\n        my content\n        test\n    </div>\n    <div class=\"root\">\n        my content\n        test\n    </div>\n    <div class=\"root\">\n        my content\n        test\n    </div>\n    <div class=\"root\">\n        my content\n        test\n    </div>\n\n\n\n\n</body>",
+                "html": reportData,
+                "viewport ": "900x1200",
+                "filename": reportName
+        })
+        };
+
+        axios.request(options).then(function (response) {
+            console.log(response.data);
+            getExistedReport(false, reportName);
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+
+    function getExistedReport(isRetryEnabled, reportName) {
+        const options1 = {
+            "method": "GET",
+            "url": `https://storage.pdfendpoint.com/8e4b3d37-a0c2-424d-8635-3eca48ec49d6/${reportName}`,
+            responseType: 'blob',
+        };
+        axios.request(options1).then(function (response) {
+            console.log(response.data);
+
+            const a = document.createElement('a');
+            const href = window.URL.createObjectURL(response.data);
+            a.href = href;
+            a.download = reportName;
+            a.click();
+        }).catch(function (error) {
+            console.error(error);
+            if(isRetryEnabled) {
+                generateReport(reportName);
+            }
+        });
+    }
+
+    function getOriginalReport() {
+        generateReport("Weekly_Kuul_Play_Report.pdf");
+    }
+
+    function getEditedReport() {
+        generateReport("Weekly_Kuul_Play_Report_edited.pdf");
+    }
+
+    //getExistedReport(true);
+</script>
+
+<body>
+    <div id="contols">
+        <button onclick="getOriginalReport()">Download base report</button>
+    </div>
+
+    <div id="report">
+        <div class="root" style="height: 800px;width: 1100px;background-color: white;font-size: 100px;">
+            <p style="padding-top: 200px; padding-left: 100px;">Weekly Kuul Play</p>
+            <p style="padding-left: 100px;">Report</p>
+        </div>
+        
+        <div class="root" style="height: 800px;width: 1100px;background-color: white;">
+            <table style="height: 800px; width: 100%;">
+                <tbody>
+                    <tr>
+                        <td rowspan="2" style="border-right: solid grey;width: 100px;"></td>
+                        <td style="border-bottom: solid grey;height: 50px;">
+                            <p style="font-weight: bold; color: grey; font-size: 30px;">Weekly Kuul Play Internal Monitoring Report</p>
+                            <p>
+                                <span style="font-weight: bold;">Date Period </span>
+                                <span style="border: solid grey;border-radius: 5px;">from Aug 1, 2023</span>
+                                <span style="border: solid grey;border-radius: 5px;">to Aug7, 2023</span>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: baseline;">
+                            <p style="font-weight: bold; color: grey;">Instructor Activity Level</p>
+                            <table style="width: 98%;text-align: center;margin-left: 2%;">
+                                <tbody><tr>
+                                    <td rowspan="2" style="border-top-left-radius: 10px; background-color: darkturquoise; border-top-right-radius: 10px;">Instructor Name</td>
+                                    <td rowspan="2"># logins</td>
+                                    <td colspan="2">Lesson duration (mins)</td>
+                                    <td rowspan="2">Current Progress</td>
+                                    <td rowspan="2">Last Survey Completed</td>
+                                </tr>
+                                <tr>
+                                    <td>Lesson Name</td>
+                                    <td>Lesson Name</td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: darkturquoise;">Ana Garcia</td>
+                                    <td style="width: 150px;">
+                                        <div style=" background-color: yellow; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;">2</div>
+                                    </td>
+                                    <td style="width: 150px;">
+                                        <div style=" background-color: greenyellow; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;">41</div>
+                                    </td>
+                                    <td style="width: 150px;">
+                                        <div style=" background-color: yellow; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;">29</div>
+                                    </td>
+                                    <td style="color: blue;font-weight: bold;">Mission 1; L2</td>
+                                    <td style="color: blue;font-weight: bold;">N/A</td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: darkturquoise;">Thao Min</td>
+                                    <td style="width: 150px;">
+                                        <div style=" background-color: greenyellow; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;">3</div>
+                                    </td>
+                                    <td style="width: 150px;">
+                                        <div style=" background-color: yellow; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;">28</div>
+                                    </td>
+                                    <td style="width: 150px;">
+                                        <div style=" background-color: greenyellow; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;">35</div>
+                                    </td>
+                                    <td style="color: blue;font-weight: bold;">Mission 1; L2</td>
+                                    <td style="color: blue;font-weight: bold;">Mission 1; L3</td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: darkturquoise;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">Jack Smith</td>
+                                    <td style="width: 150px;">
+                                        <div style=" background-color: red; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;">0</div>
+                                    </td>
+                                    <td style="width: 150px;">
+                                        <div style=" background-color: red; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;">20</div>
+                                    </td>
+                                    <td style="width: 150px;">
+                                        <div style=" background-color: red; border: 2px solid blue; width: 130px; border-radius: 5px; margin-left: 10px; margin-right: 10px;">10</div>
+                                    </td>
+                                    <td style="color: blue;font-weight: bold;"></td>
+                                    <td style="color: blue;font-weight: bold;"></td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
